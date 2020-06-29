@@ -16,12 +16,16 @@ const Burger = (props) => {
   const { ingredients } = props;
   const transformedIngredients = Object.keys(ingredients)
     .map((key) => [...Array(ingredients[key])]
-      .map((_, i) => <BurgerIngredient key={String(key + i)} type={key} />));
+      .map((_, i) => <BurgerIngredient key={String(key + i)} type={key} />))
+    .flat();
+
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
       {
-        transformedIngredients
+        !transformedIngredients.length
+          ? <p>Please start adding ingredients</p>
+          : transformedIngredients
       }
       <BurgerIngredient type="bread-bottom" />
     </div>
