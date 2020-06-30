@@ -89,7 +89,7 @@ class BurgerBuilder extends Component {
     const sum = Object.keys(ingredients)
       .map((key) => ingredients[key])
       .reduce((acc, i) => acc + i, 0);
-    console.log(sum);
+
     this.setState({
       purchaseable: sum > 0,
     });
@@ -108,8 +108,6 @@ class BurgerBuilder extends Component {
     keys.forEach((key) => {
       disabledInfo[key] = disabledInfo[key] <= 0;
     });
-
-    console.log(disabledInfo);
 
     return (
       <Aux>

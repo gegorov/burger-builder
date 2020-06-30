@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { render } from '@testing-library/react';
 import Aux from '../../hoc/Aux';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
