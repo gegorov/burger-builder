@@ -6,15 +6,15 @@ import Aux from '../../../hoc/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 const propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
   modalClosed: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
+  show: PropTypes.bool,
 };
 
 class Modal extends Component {
   shouldComponentUpdate(nextProps) {
-    const { show } = this.props;
-    if (nextProps.show !== show) {
+    const { show, children } = this.props;
+    if (nextProps.show !== show || nextProps.children !== children) {
       return true;
     }
     return false;
@@ -40,5 +40,9 @@ class Modal extends Component {
 }
 
 Modal.propTypes = propTypes;
+Modal.defaultProps = {
+  children: null,
+  show: false,
+};
 
 export default Modal;

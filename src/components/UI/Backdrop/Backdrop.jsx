@@ -5,7 +5,7 @@ import classes from './Backdrop.module.css';
 
 const propTypes = {
   clicked: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
+  show: PropTypes.bool,
 };
 
 const Backdrop = (props) => {
@@ -14,5 +14,8 @@ const Backdrop = (props) => {
 };
 
 Backdrop.propTypes = propTypes;
+Backdrop.defaultProps = {
+  show: false,
+};
 
 export default Backdrop;
