@@ -9,8 +9,20 @@
   margin: auto;
 }
 
-@media(min-width: 600px) {
+@media (min-width: 500px){
   .CheckoutSummary {
     width: 500px;
+  }
+}
+
+@media (min-width: 700px){
+  .CheckoutSummary {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1000px){
+  .CheckoutSummary {
+    width: 80%;
   }
 }
