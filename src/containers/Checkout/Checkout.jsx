@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import ContactData from './ContactData/ContactData';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import Aux from '../../hoc/Aux';
 
 class Checkout extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Checkout extends Component {
   render() {
     const { ingredients, totalPrice } = this.state;
     return (
-      <div>
+      <Aux>
         <CheckoutSummary
           ingredients={ingredients}
           checkoutCancelled={this.checkoutCancelledHandler}
@@ -50,7 +51,7 @@ class Checkout extends Component {
           path={`${this.props.match.path}/contact-data`}
           render={(props) => (<ContactData ingredients={ingredients} price={totalPrice} {...props} />)}
         />
-      </div>
+      </Aux>
     );
   }
 }
