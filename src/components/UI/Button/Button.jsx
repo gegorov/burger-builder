@@ -5,7 +5,7 @@ import classes from './Button.module.css';
 
 const propTypes = {
   children: PropTypes.string.isRequired,
-  clicked: PropTypes.func.isRequired,
+  clicked: PropTypes.func,
   btnType: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
@@ -29,6 +29,7 @@ const Button = (props) => {
 Button.propTypes = propTypes;
 Button.defaultProps = {
   type: 'button',
+  clicked: () => {},
 };
 
 export default Button;
