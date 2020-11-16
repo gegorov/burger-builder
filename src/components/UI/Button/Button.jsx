@@ -8,11 +8,12 @@ const propTypes = {
   clicked: PropTypes.func,
   btnType: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  disabled: PropTypes.bool,
 };
 
 const Button = (props) => {
   const {
-    children, clicked, btnType, type,
+    children, clicked, btnType, type, disabled,
   } = props;
   return (
     <button
@@ -20,6 +21,7 @@ const Button = (props) => {
       type={type}
       onClick={clicked}
       className={[classes.Button, classes[btnType]].join(' ')}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -29,6 +31,7 @@ const Button = (props) => {
 Button.propTypes = propTypes;
 Button.defaultProps = {
   type: 'button',
+  disabled: false,
   clicked: () => {},
 };
 
