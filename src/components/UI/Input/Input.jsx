@@ -17,20 +17,36 @@ const propTypes = {
   }).isRequired,
   name: PropTypes.string.isRequired,
   changed: PropTypes.func.isRequired,
+  valid: PropTypes.bool,
+  shouldValidate: PropTypes.bool.isRequired,
+  touched: PropTypes.bool.isRequired,
 };
 
 const Input = (props) => {
   const {
-    value, elementType, elementConfig, name, changed,
+    value, elementType, elementConfig, name, changed, valid, shouldValidate, touched,
   } = props;
 
   let inputElement = null;
+  let validationError = null;
+  const inputClasses = [classes.InputElement];
+
+  if (!valid && shouldValidate && touched) {
+    inputClasses.push(classes.Invalid);
+    validationError = (
+      <p className={classes.ValidationError}>
+        Please enter a valid
+        {' '}
+        {elementConfig.type}
+      </p>
+    );
+  }
 
   switch (elementType) {
     case 'input':
       inputElement = (
         <input
-          className={classes.InputElement}
+          className={inputClasses.join(' ')}
           placeholder={elementConfig.placeholder}
           id={name}
           name={name}
@@ -89,8 +105,13 @@ const Input = (props) => {
     <div className={classes.Input}>
       <label htmlFor={name} className={classes.Label}>{elementConfig.label}</label>
       {inputElement}
+      {validationError}
     </div>
   );
+};
+
+Input.defaultProps = {
+  valid: true,
 };
 
 Input.propTypes = propTypes;
